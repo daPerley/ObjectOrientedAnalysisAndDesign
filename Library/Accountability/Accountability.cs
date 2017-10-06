@@ -1,4 +1,6 @@
-﻿namespace AnalysisLibrary.Accountability
+﻿using System;
+
+namespace AnalysisLibrary.Accountability
 {
     public class Accountability
     {
@@ -10,5 +12,8 @@
 
         public int ResponsibleId { get; set; }
         public Party Responsible { get; set; }
+
+        public DateTime AccountabilityStart { get; set; }
+        public DateTime AccountabilityEnd { get; set; }
     }
 }

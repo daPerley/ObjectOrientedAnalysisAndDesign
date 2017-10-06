@@ -17,6 +17,6 @@ namespace AnalysisLibrary.Accountability
         CommersialSalesRelationship = 2,
 
         // Company - Company
-        SupplierRelationship = 4
+        SupplierRelationship = 3
     }
 }

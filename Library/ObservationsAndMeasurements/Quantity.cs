@@ -2,12 +2,25 @@
 
 namespace AnalysisLibrary.ObservationsAndMeasurements
 {
-    class Quantity
+    public class Quantity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public Decimal Amount { get; set; }
 
-        public Guid UnitId { get; set; }
+        public int UnitId { get; set; }
         public Unit Unit { get; set; }
+
+
+        public static Quantity ConvertQuantity(ConvertionRatio convertionRatio, Quantity quantity)
+        {
+            // When using database replace convertionRatio above with the ratio the user wish to convert to
+            // then search for the ConvertionRatio that goes from quantity.Unit to whishUnit
+
+            quantity.Amount = quantity.Amount * convertionRatio.Ratio;
+            quantity.Unit = convertionRatio.ToUnit;
+            quantity.UnitId = convertionRatio.ToUnitId;
+
+            return quantity;
+        }
     }
 }

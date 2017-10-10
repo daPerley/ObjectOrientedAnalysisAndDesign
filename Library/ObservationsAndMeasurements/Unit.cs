@@ -2,9 +2,9 @@
 
 namespace AnalysisLibrary.ObservationsAndMeasurements
 {
-    class Unit
+    public class Unit
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

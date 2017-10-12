@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AnalysisLibrary.Accountability
@@ -23,7 +24,12 @@ namespace AnalysisLibrary.Accountability
 
         public Party Get(string term)
         {
-            return parties.FirstOrDefault(x => x.LegalId == term);
+            Party party = parties.FirstOrDefault(x => x.LegalId == term);
+
+            if (party == null)
+                throw new InvalidOperationException("No party with the give legal id could be found!");
+
+            return party;
         }
     }
 }

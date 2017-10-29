@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int SetNumber { get; set; }
+        public int GamePartyId { get; set; }
         public int[] Rounds { get; set; } = new int[10];
     }
 

@@ -20,14 +20,12 @@ namespace BengansBowlinghallLibrary
             for (int i = 0; i < frames.Count(); i++)
             {
                 Random rnd = new Random();
-                var firstBall = 0;
+                var firstBall = rnd.Next(0, 11);
 
-                if (gamePartyId == 1)
+                if (gamePartyId == 1) // Makes sure player one get higher scores than player two in game 1
                     firstBall = rnd.Next(9, 11);
                 else if (gamePartyId == 2)
                     firstBall = rnd.Next(0, 3);
-                else
-                    firstBall = rnd.Next(0, 11);
 
                 var secondBall = rnd.Next(0, 11 - firstBall);
 

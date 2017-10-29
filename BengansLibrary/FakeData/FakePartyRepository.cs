@@ -97,14 +97,14 @@ namespace BengansBowlinghallLibrary.FakeData
             new GameParty
             {
                 Id = 4,
-                PartyId = 2,
+                PartyId = 3,
                 GameId = 2
             },
             new GameParty
             {
                 Id = 5,
                 PartyId = 4,
-                GameId = 2
+                GameId = 3
             },
             new GameParty
             {
@@ -147,7 +147,11 @@ namespace BengansBowlinghallLibrary.FakeData
 
         public Party GetChampion(string year)
         {
-            throw new NotImplementedException();
+            var gamesOfYear = games.FindAll(games => games.DateTime.Year.ToString() == year);
+
+            //Use get winner to get the winners of the games that year
+
+            return new Party(); //replace with actual party
         }
 
         public Party GetWinner(int gameId)

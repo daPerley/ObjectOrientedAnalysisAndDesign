@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BengansBowlinghallLibrary.FakeData
 {
@@ -160,7 +161,14 @@ namespace BengansBowlinghallLibrary.FakeData
             foreach (var party in gameParty)
             {
                 var points = 0;
-                // Calculate the sets in a loop
+
+                foreach (var set in sets.Where(s => s.GamePartyId == party.PartyId))
+                {
+                    foreach (var frame in set.Frames)
+                    {
+                        points += frame;
+                    }
+                }
 
                 if (points > leadingPoints)
                 {
@@ -173,9 +181,9 @@ namespace BengansBowlinghallLibrary.FakeData
                 }
             }
 
-            var winner = new Party(); //replace with actual winner
+            return parties.FirstOrDefault(p => p.Id == leadingPartyId);
 
-            return winner;
+            // Figure how to return more than one winner
         }
     }
 }

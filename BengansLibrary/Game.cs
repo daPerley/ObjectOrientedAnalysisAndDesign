@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BengansBowlinghallLibrary
 {
@@ -6,5 +7,6 @@ namespace BengansBowlinghallLibrary
     {
         public int Id { get; set; }
         public IEnumerable<Party> Players { get; set; }
+        public DateTime DateTime { get; set; }
     }
 }

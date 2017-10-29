@@ -56,13 +56,93 @@ namespace BengansBowlinghallLibrary.FakeData
 
         public List<Game> games = new List<Game>
         {
-            //Set up fake games
+            new Game
+            {
+                Id = 1,
+                DateTime = new DateTime(2017,05,24)
+            },
+            new Game
+            {
+                Id = 2,
+                DateTime = new DateTime(2017,02,29)
+            },
+            new Game
+            {
+                Id = 3,
+                DateTime = new DateTime(2017,09,17)
+            }
         };
 
         public List<GameParty> gameParties = new List<GameParty>
         {
-            //Set up fake gamesparties
+            new GameParty
+            {
+                Id = 1,
+                PartyId = 1,
+                GameId = 1
+            },
+            new GameParty
+            {
+                Id = 2,
+                PartyId = 3,
+                GameId = 1
+            },
+            new GameParty
+            {
+                Id = 3,
+                PartyId = 1,
+                GameId = 2
+            },
+            new GameParty
+            {
+                Id = 4,
+                PartyId = 2,
+                GameId = 2
+            },
+            new GameParty
+            {
+                Id = 5,
+                PartyId = 4,
+                GameId = 2
+            },
+            new GameParty
+            {
+                Id = 6,
+                PartyId = 5,
+                GameId = 3
+            },
+            new GameParty
+            {
+                Id = 7,
+                PartyId = 2,
+                GameId = 3
+            }
         };
+
+        public List<Set> sets = new List<Set>
+        {
+            Set.RandomSet(1, 1),
+            Set.RandomSet(1, 2),
+            Set.RandomSet(1, 3),
+            Set.RandomSet(2, 1),
+            Set.RandomSet(2, 2),
+            Set.RandomSet(2, 3),
+            Set.RandomSet(3, 1),
+            Set.RandomSet(3, 2),
+            Set.RandomSet(3, 3),
+            Set.RandomSet(4, 1),
+            Set.RandomSet(4, 2),
+            Set.RandomSet(4, 3),
+            Set.RandomSet(5, 1),
+            Set.RandomSet(5, 2),
+            Set.RandomSet(5, 3),
+            Set.RandomSet(6, 1),
+            Set.RandomSet(6, 2),
+            Set.RandomSet(6, 3),
+            Set.RandomSet(7, 1),
+            Set.RandomSet(7, 2),
+            Set.RandomSet(7, 3),
+    };
 
         public Party GetChampion(string year)
         {

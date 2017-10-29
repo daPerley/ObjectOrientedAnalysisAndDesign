@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BengansBowlinghallLibrary.FakeData
 {
-    public class FakePartRepository : IPartyService
+    public class FakePartyRepository : IPartyService
     {
         public List<Party> parties = new List<Party>
         {
@@ -60,17 +60,17 @@ namespace BengansBowlinghallLibrary.FakeData
             new Game
             {
                 Id = 1,
-                DateTime = new DateTime(2017,05,24)
+                DateTime = new DateTime(2017,5,24)
             },
             new Game
             {
                 Id = 2,
-                DateTime = new DateTime(2017,02,29)
+                DateTime = new DateTime(2017,2,22)
             },
             new Game
             {
                 Id = 3,
-                DateTime = new DateTime(2017,09,17)
+                DateTime = new DateTime(2017,9,17)
             }
         };
 
@@ -122,28 +122,28 @@ namespace BengansBowlinghallLibrary.FakeData
 
         public List<Set> sets = new List<Set>
         {
-            Set.RandomSet(1, 1),
-            Set.RandomSet(1, 2),
-            Set.RandomSet(1, 3),
-            Set.RandomSet(2, 1),
-            Set.RandomSet(2, 2),
-            Set.RandomSet(2, 3),
-            Set.RandomSet(3, 1),
-            Set.RandomSet(3, 2),
-            Set.RandomSet(3, 3),
-            Set.RandomSet(4, 1),
-            Set.RandomSet(4, 2),
-            Set.RandomSet(4, 3),
-            Set.RandomSet(5, 1),
-            Set.RandomSet(5, 2),
-            Set.RandomSet(5, 3),
-            Set.RandomSet(6, 1),
-            Set.RandomSet(6, 2),
-            Set.RandomSet(6, 3),
-            Set.RandomSet(7, 1),
-            Set.RandomSet(7, 2),
-            Set.RandomSet(7, 3),
-    };
+            Set.RandomSet(1, 1, 1),
+            Set.RandomSet(2, 1, 2),
+            Set.RandomSet(3, 1, 3),
+            Set.RandomSet(4, 2, 1),
+            Set.RandomSet(5, 2, 2),
+            Set.RandomSet(6, 2, 3),
+            Set.RandomSet(7, 3, 1),
+            Set.RandomSet(8, 3, 2),
+            Set.RandomSet(9, 3, 3),
+            Set.RandomSet(10, 4, 1),
+            Set.RandomSet(11, 4, 2),
+            Set.RandomSet(12, 4, 3),
+            Set.RandomSet(13, 5, 1),
+            Set.RandomSet(14, 5, 2),
+            Set.RandomSet(15, 5, 3),
+            Set.RandomSet(16, 6, 1),
+            Set.RandomSet(17, 6, 2),
+            Set.RandomSet(18, 6, 3),
+            Set.RandomSet(19, 7, 1),
+            Set.RandomSet(20, 7, 2),
+            Set.RandomSet(21, 7, 3),
+        };
 
         public Party GetChampion(string year)
         {
@@ -162,7 +162,7 @@ namespace BengansBowlinghallLibrary.FakeData
             {
                 var points = 0;
 
-                foreach (var set in sets.Where(s => s.GamePartyId == party.PartyId))
+                foreach (var set in sets.Where(s => s.GamePartyId == party.Id))
                 {
                     foreach (var frame in set.Frames)
                     {
@@ -173,6 +173,7 @@ namespace BengansBowlinghallLibrary.FakeData
                 if (points > leadingPoints)
                 {
                     leadingPartyId = party.PartyId;
+                    leadingPoints = points;
                 }
                 else if (points == leadingPoints)
                 {

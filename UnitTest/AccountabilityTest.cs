@@ -1,6 +1,5 @@
 using AnalysisLibrary.Accountability;
 using FluentAssertions;
-using FluentAssertions.Primitives;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 

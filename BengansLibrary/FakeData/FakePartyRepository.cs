@@ -147,11 +147,21 @@ namespace BengansBowlinghallLibrary.FakeData
 
         public Party GetChampion(string year)
         {
-            var gamesOfYear = games.FindAll(games => games.DateTime.Year.ToString() == year);
+            List<Game> gamesOfYear = games.FindAll(games => games.DateTime.Year.ToString() == year);
 
-            //Use get winner to get the winners of the games that year
+            var winners = new List<Party>();
 
-            return new Party(); //replace with actual party
+            foreach (var game in gamesOfYear)
+            {
+                winners.Add(GetWinner(game.Id));
+            }
+
+            var winner = winners.GroupBy(w => w).OrderByDescending(grp => grp.Count())
+      .Select(grp => grp.Key).First();
+
+            return winner;
+
+            // Figure how to return more than one champion
         }
 
         public Party GetWinner(int gameId)

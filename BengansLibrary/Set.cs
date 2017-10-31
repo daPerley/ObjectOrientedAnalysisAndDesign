@@ -22,7 +22,7 @@ namespace BengansBowlinghallLibrary
                 Random rnd = new Random();
                 var firstBall = rnd.Next(0, 11);
 
-                if (gamePartyId == 1 || gamePartyId == 3) // Makes sure player one get higher scores than player two in game 1
+                if (gamePartyId == 1 || gamePartyId == 3) // Makes sure player one get higher scores than player two in game 1 and 2
                     firstBall = rnd.Next(9, 11);
                 else if (gamePartyId == 2 || gamePartyId == 4)
                     firstBall = rnd.Next(0, 3);

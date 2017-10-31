@@ -161,7 +161,7 @@ namespace BengansBowlinghallLibrary.FakeData
 
             return winner;
 
-            // Figure how to return more than one champion
+            // TODO: Figure a better system than letting the player that is slumped to the first spot when several players have the same number of wins win
         }
 
         public Party GetWinner(int gameId)
@@ -188,6 +188,7 @@ namespace BengansBowlinghallLibrary.FakeData
                 {
                     leadingPartyId = party.PartyId;
                     leadingPoints = points;
+                    tiePartyIds = new List<int>();
                 }
                 else if (points == leadingPoints)
                 {
@@ -196,9 +197,18 @@ namespace BengansBowlinghallLibrary.FakeData
                 }
             }
 
-            return parties.FirstOrDefault(p => p.Id == leadingPartyId);
+            List<Party> winner = new List<Party>();
 
-            // Figure how to return more than one winner
+            if (tiePartyIds != null)
+            {
+                foreach (var id in tiePartyIds)
+                {
+                    winner.Add(parties.FirstOrDefault(p => p.Id == id));
+                    // TODO: Return this list when there's more than one winner, or let the first to the points win as for now...
+                }
+            }
+
+            return parties.FirstOrDefault(p => p.Id == leadingPartyId);
         }
     }
 }

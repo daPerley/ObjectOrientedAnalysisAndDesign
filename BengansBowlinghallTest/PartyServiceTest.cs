@@ -8,7 +8,7 @@ namespace BengansBowlinghallTest
     [TestClass]
     public class PartyServiceTest
     {
-        public PartyRepository sut = new PartyRepository(FakeParties._instance.GetParties(), FakeGames._instance.GetGames(), FakeGameParties._instance.GetGameParties());
+        public PartyRepository sut = new PartyRepository(FakeDBContext._instance);
 
         [TestMethod]
         public void GetWinner_GetWinnerByGameId_ShouldReturnPartyWithId1()

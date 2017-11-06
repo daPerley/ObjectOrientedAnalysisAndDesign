@@ -7,7 +7,7 @@ namespace BengansBowlinghallLibrary.FakeData
     {
         public static readonly FakeGames _instance = new FakeGames();
 
-        public List<Game> GetGames()
+        public List<Game> Get()
         {
             return new List<Game>
         {

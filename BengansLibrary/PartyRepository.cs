@@ -1,24 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using BengansBowlinghallLibrary.FakeData;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BengansBowlinghallLibrary
 {
     public class PartyRepository : IPartyService
     {
-        private List<Party> _parties;
-        private List<Game> _games;
-        private List<GameParty> _gameParties;
+        private FakeDBContext _fakeDBContext;
 
-        public PartyRepository(List<Party> parties, List<Game> games, List<GameParty> gameParties)
+        public PartyRepository(FakeDBContext fakeDBContext)
         {
-            _parties = parties;
-            _games = games;
-            _gameParties = gameParties;
+            _fakeDBContext = fakeDBContext;
         }
 
         public Party GetChampion(string year)
         {
-            List<Game> gamesOfYear = _games.FindAll(games => games.DateTime.Year.ToString() == year);
+            List<Game> gamesOfYear = _fakeDBContext.Games.FindAll(games => games.DateTime.Year.ToString() == year);
 
             var winners = new List<Party>();
 
@@ -37,7 +34,7 @@ namespace BengansBowlinghallLibrary
 
         public Party GetWinner(int gameId)
         {
-            var gameParty = _gameParties.FindAll(g => g.GameId == gameId);
+            var gameParty = _fakeDBContext.GameParties.FindAll(g => g.GameId == gameId);
 
             int leadingPartyId = 0;
             List<int> tiePartyIds = new List<int>();
@@ -64,12 +61,12 @@ namespace BengansBowlinghallLibrary
             {
                 foreach (var id in tiePartyIds)
                 {
-                    winner.Add(_parties.FirstOrDefault(p => p.Id == id));
+                    winner.Add(_fakeDBContext.Parties.FirstOrDefault(p => p.Id == id));
                     // TODO: Return this list when there's more than one winner, or let the first to the points win as for now...
                 }
             }
 
-            return _parties.FirstOrDefault(p => p.Id == leadingPartyId);
+            return _fakeDBContext.Parties.FirstOrDefault(p => p.Id == leadingPartyId);
         }
     }
 }

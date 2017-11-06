@@ -6,7 +6,7 @@ namespace BengansBowlinghallLibrary.FakeData
     {
         public static readonly FakeParties _instance = new FakeParties();
 
-        public List<Party> GetParties()
+        public List<Party> Get()
         {
             return new List<Party>
             {

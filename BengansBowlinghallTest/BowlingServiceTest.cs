@@ -6,9 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BengansBowlinghallTest
 {
     [TestClass]
-    public class PartyServiceTest
+    public class BowlingServiceTest
     {
-        public PartyRepository sut = new PartyRepository(FakeDBContext._instance);
+        public BowlingService sut = new BowlingService(FakeDBContext._instance);
 
         [TestMethod]
         public void GetWinner_GetWinnerByGameId_ShouldReturnPartyWithId1()

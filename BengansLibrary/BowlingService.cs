@@ -4,13 +4,25 @@ using System.Linq;
 
 namespace BengansBowlinghallLibrary
 {
-    public class PartyRepository : IPartyService
+    public class BowlingService : IBowlingService
     {
         private FakeDBContext _fakeDBContext;
 
-        public PartyRepository(FakeDBContext fakeDBContext)
+        private PartyRepositoryInMemory partyRepositoryInMemory = new PartyRepositoryInMemory();
+
+        public BowlingService(FakeDBContext fakeDBContext)
         {
             _fakeDBContext = fakeDBContext;
+        }
+
+        public Party AddPartyIM(string name, bool isMember)
+        {
+            return partyRepositoryInMemory.AddParty(name, isMember);
+        }
+
+        public Party GetIM(int id)
+        {
+            return partyRepositoryInMemory.Get(id);
         }
 
         public Party GetChampion(string year)
